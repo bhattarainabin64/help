@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% block title %}Nabin{% endblock title %}
+{% block content %}
+
+
+<h1 class="text-center mt-5 mb-4">Welcome to our Sanghu Glocery Website</h1>
+<hr>
+<div class="container  mb-5 ">
+
+<div class="row mt-5 text-center d-flex justify-content-center  flex-wrap ">
+{% for p in product_list %}
+   <div class="card col-md-3 m-2 shadow bg-light rounded" >
+       <div class="d-flex justify-content-center">
+           <img src="{{p.image.url}}"  alt="..." height="300" width="320">
+       </div>
+  <div class="card-body">
+    <h5 class="card-title" style="font-size:20px">{{p.product_name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div class="row " >
+                     <div class="col border-right">
+                          <a href="{% url 'groceryapp:addtocard' p.id %}" class="btn btn-primary btn-block p-4" style="border-radius:12px; border:none" >Add to Cart</a>
+                     </div>
+                      <div class="col border-right ms-5">
+                          <a href="{% url 'groceryapp:productdetail' p.slug %}" class="btn btn-dark btn-block p-4 " style="border-radius:12px; border:none">View Product</a>
+                     </div>
+
+                 </div>
+
+      </div>
+</div>
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}
